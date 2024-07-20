@@ -4,3 +4,7 @@ spring:
 
 server:
   port: 8080
+
+telegram-bot:
+  username: ${TELEGRAM_BOT_USERNAME:el_chapo_bbot}
+  token: ${TELEGRAM_BOT_TOKEN:7251075817:AAFRBgeTbB1grIAxuJW23mYAXKQ1PWtdzmw}
