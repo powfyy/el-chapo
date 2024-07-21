@@ -2,6 +2,7 @@ package com.el.chapo.config;
 
 import com.el.chapo.exception.LogicException;
 import com.el.chapo.exception.helper.CommonErrorCode;
+import com.el.chapo.properties.BankProperties;
 import com.el.chapo.properties.TelegramBotProperties;
 import com.el.chapo.service.TelegramBot;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +16,7 @@ import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 
 @Configuration
 @RequiredArgsConstructor
-@EnableConfigurationProperties({TelegramBotProperties.class})
+@EnableConfigurationProperties({TelegramBotProperties.class, BankProperties.class})
 public class TelegramBotConfig {
 
   private final TelegramBot telegramBot;
