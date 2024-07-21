@@ -1,6 +1,6 @@
-package com.el.chapo.service;
+package com.el.chapo.util;
 
-import org.springframework.stereotype.Service;
+import lombok.experimental.UtilityClass;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
@@ -9,14 +9,14 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.Keyboard
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
-public class MainMenuService {
+@UtilityClass
+public class MainMenuUtil {
 
-  public SendMessage getMainMenuMessage(long chatId, String textMessage) {
+  public static SendMessage getMainMenuMessage(long chatId, String textMessage) {
     return createMessageWithKeyboard(chatId, textMessage, getMainMenuKeyboard());
   }
 
-  private ReplyKeyboardMarkup getMainMenuKeyboard() {
+  public static ReplyKeyboardMarkup getMainMenuKeyboard() {
 
     final ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
     replyKeyboardMarkup.setSelective(true);

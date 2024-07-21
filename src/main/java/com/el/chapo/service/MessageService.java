@@ -1,5 +1,6 @@
 package com.el.chapo.service;
 
+import com.el.chapo.util.MainMenuUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -9,7 +10,7 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 @RequiredArgsConstructor
 public class MessageService {
 
-  private final MainMenuService mainMenuService;
+  private final SberService sberService;
 
   public SendMessage send(Update update) {
     if (update.hasMessage() && update.getMessage().hasText()) {
@@ -18,16 +19,13 @@ public class MessageService {
       String responseText;
       switch (text) {
         case "/start" -> {
-          return mainMenuService.getMainMenuMessage(chatId, "Здарова, лысый");
+          return MainMenuUtil.getMainMenuMessage(chatId, "Здарова, лысый");
         }
         case "Сбербанк" -> {
-
-        }
-        case "Тинькофф" -> {
-
+          return sberService.getTransferChoice(chatId);
         }
         default -> {
-          return mainMenuService.getMainMenuMessage(chatId, "Неизвестная команда. Воспользуйся меню управления.");
+          return MainMenuUtil.getMainMenuMessage(chatId, "Неизвестная команда. Воспользуйся меню управления.");
         }
       }
 
